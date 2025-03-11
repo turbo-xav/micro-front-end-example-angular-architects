@@ -1,12 +1,13 @@
-import {Component, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import {Component, CUSTOM_ELEMENTS_SCHEMA, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
+import {RouterLink, RouterOutlet} from '@angular/router';
 import {loadRemoteModule} from '@angular-architects/native-federation';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, RouterLink],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppComponent implements OnInit{
   title = 'shell';
@@ -15,6 +16,23 @@ export class AppComponent implements OnInit{
   container!: ViewContainerRef;
 
   async ngOnInit() {
+    loadRemoteModule({
+      remoteName: 'web-components', // Nom du remote (doit correspondre à la configuration Webpack)
+      exposedModule: './HelloWorldComponent' // Chemin du module exposé (correspond à la clé dans `exposes`)
+    })
+      .then((module) => {
+        /*console.log('Remote Web Component chargé depuis le remote');
+        // Exécutez ici l’enregistrement nécessaire, par exemple customElements.define
+        const HelloWorldComponent = module.HelloWorldComponent;
+        if (!customElements.get('hello-world')) {
+          customElements.define('hello-world', HelloWorldComponent);
+        }*/
+      })
+      .catch((err) => console.error('Erreur lors du chargement du Remote Web Component', err));
+
+
+
+
     const module = await loadRemoteModule({
       remoteEntry: 'http://localhost:4201/remoteEntry.js', // URL du remote
       exposedModule: './RemoteComponent', // Nom configuré dans le webpack.config.js
@@ -22,7 +40,8 @@ export class AppComponent implements OnInit{
 
     // Instancie dynamiquement le composant dans le conteneur
     const componentRef = this.container.createComponent(module.RemoteComponent);
-    (componentRef.instance as any)['remoteInput'] = 'Angular';
+    const component = componentRef.instance;
+    (componentRef.instance as any)['remoteInput'] = 'Loaded by loadRemoteModule';
   }
 
 }

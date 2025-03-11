@@ -1,3 +1,16 @@
 <h1>{{title}}</h1>
+<nav>
+  <ul>
+    <li><a [routerLink]="['/mfe1']">Mfe1</a></li>
+    <li><a [routerLink]="['/remote']">Mfe1 Remote</a></li>
+    <li><a [routerLink]="['/web-components']">Web Component</a></li>
+    <li><a [routerLink]="['/hello-world']">Just hello Web Component</a></li>
+  </ul>
+</nav>
+<h2>Load as HTML Tag</h2>
 <div #container></div>
 <router-outlet />
+
+
+<h3>Simple include of hello world component</h3>
+<hello-world></hello-world>
