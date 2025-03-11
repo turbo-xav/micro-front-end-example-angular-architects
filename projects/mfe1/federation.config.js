@@ -6,6 +6,8 @@ module.exports = withNativeFederation({
 
   exposes: {
     './Component': './projects/mfe1/src/app/app.component.ts',
+    './RemoteComponent': './projects/mfe1/src/app/remote/remote.component.ts',
+
   },
 
   shared: {
@@ -22,5 +24,5 @@ module.exports = withNativeFederation({
 
   // Please read our FAQ about sharing libs:
   // https://shorturl.at/jmzH0
-  
+
 });
