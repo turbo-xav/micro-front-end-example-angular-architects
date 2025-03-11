@@ -1,4 +1,16 @@
-Etapes : 
+# Exemple d'utilisation de "@angular-architects  
+ 
+## Libs utilisées :
+ - @angular-architects/native-federation
+ - @angular-architects/module-federation
+
+## Lancer le projet :
+ - npm ci
+ - npm start
+ - Browse http://localhost:4200
+
+
+## Quelques étapes clef pour utiliser le plugin : 
 1 - Installation du plugin 
 - npm i @angular-architects/native-federation -D  
 2 - Génération de shell & remote
@@ -22,3 +34,8 @@ export const routes: Routes = [
   },
 ];
 ```
+
+## Docs utiles:
+ - https://github.com/angular-architects/module-federation-plugin/blob/main/libs/native-federation/README.md#error-file-srcmaints-is-missing-from-the-typescript-compilation-plugin-angular-compiler
+ - https://www.angulararchitects.io/en/blog/the-microfrontend-revolution-part-2-module-federation-with-angular/
+ - 

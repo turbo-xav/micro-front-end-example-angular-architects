@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-remote',
@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrl: './remote.component.scss'
 })
 export class RemoteComponent {
-
+ @Input() remoteInput = 'remote is Ok';
 }
