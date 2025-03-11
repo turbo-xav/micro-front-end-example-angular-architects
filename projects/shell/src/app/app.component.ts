@@ -1,4 +1,4 @@
-import {Component, ComponentFactoryResolver, Injector, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
+import {Component, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import {loadRemoteModule} from '@angular-architects/native-federation';
 
