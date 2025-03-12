@@ -15,7 +15,15 @@ export class AppComponent implements OnInit{
   @ViewChild('container', { read: ViewContainerRef, static: true })
   container!: ViewContainerRef;
 
+  publishEvent(): void {
+    console.warn('Publishing event...')
+    const channel = new BroadcastChannel('my-channel'); // Nom du canal
+    channel.postMessage({ event: 'newEvent', message: 'This is a super event' });
+  }
+
   async ngOnInit() {
+    setTimeout(() => this.publishEvent(), 5000);
+
     loadRemoteModule({
       remoteName: 'web-components', // Nom du remote (doit correspondre à la configuration Webpack)
       exposedModule: './HelloWorldComponent' // Chemin du module exposé (correspond à la clé dans `exposes`)

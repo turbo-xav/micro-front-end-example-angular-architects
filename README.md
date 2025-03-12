@@ -87,3 +87,5 @@ export const routes: Routes = [
 ## Documents et liens utiles:
  - [GitHub Angular Architect](https://github.com/angular-architects/module-federation-plugin/blob/main/libs/native-federation/README.md#error-file-srcmaints-is-missing-from-the-typescript-compilation-plugin-angular-compiler)
  - [Angulararchitects.io exemple](https://www.angulararchitects.io/en/blog/the-microfrontend-revolution-part-2-module-federation-with-angular)
+ - [Micro front end communication](https://dev.to/akdevcraft/ways-to-communicate-between-micro-frontends-51ol)
+ - [Event Bus](https://oskari.io/blog/event-bus-micro-frontend)
