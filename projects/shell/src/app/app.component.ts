@@ -1,10 +1,13 @@
 import {Component, CUSTOM_ELEMENTS_SCHEMA, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
 import {RouterLink, RouterOutlet} from '@angular/router';
 import {loadRemoteModule} from '@angular-architects/native-federation';
+import { DynamicIoDirective, DynamicComponent} from 'ng-dynamic-component';
+import {FirstDynamicComponent} from './first-dynamic/first-dynamic.component';
+import {SecondDynamicComponent} from './second-dynamic/second-dynamic.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterLink],
+  imports: [RouterOutlet, RouterLink, DynamicIoDirective, DynamicComponent  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
@@ -12,8 +15,27 @@ import {loadRemoteModule} from '@angular-architects/native-federation';
 export class AppComponent implements OnInit{
   title = 'shell';
 
+  inputs = {
+    name: 'transmitted value'
+  }
+
   @ViewChild('container', { read: ViewContainerRef, static: true })
   container!: ViewContainerRef;
+
+  currentComponent: any = null;
+  mfeEurrentComponent: any = null;
+
+  // Mapping des composants dynamiques
+  private readonly components = {
+    first: FirstDynamicComponent,
+    second: SecondDynamicComponent,
+  };
+
+  // Méthode pour changer de composant
+  changeComponent(type: 'first' | 'second') {
+    this.currentComponent = this.components[type];
+  }
+
 
   publishEvent(): void {
     console.warn('Publishing event...')
@@ -21,8 +43,12 @@ export class AppComponent implements OnInit{
     channel.postMessage({ event: 'newEvent', message: 'This is a super event' });
   }
 
+  doSomething(event: any): void {
+    console.warn('Publishing event...',event)
+  }
+
   async ngOnInit() {
-    setTimeout(() => this.publishEvent(), 5000);
+    setInterval(() => this.publishEvent(), 2000);
 
     loadRemoteModule({
       remoteName: 'web-components', // Nom du remote (doit correspondre à la configuration Webpack)
@@ -50,6 +76,8 @@ export class AppComponent implements OnInit{
     const componentRef = this.container.createComponent(module.RemoteComponent);
     const component = componentRef.instance;
     (componentRef.instance as any)['remoteInput'] = 'Loaded by loadRemoteModule';
+    this.mfeEurrentComponent = module.RemoteComponent;
+
   }
 
 }

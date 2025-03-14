@@ -13,7 +13,7 @@ export class HelloWorldComponent extends HTMLElement {
       div {
         font-family: Arial, sans-serif;
         color: blue;
-        font-size: 20px;
+        font-size: 12px;
         text-align: center;
       }
     `;

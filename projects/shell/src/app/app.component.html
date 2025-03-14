@@ -6,10 +6,29 @@
     <li><a [routerLink]="['/web-components']">Web Component</a></li>
   </ul>
 </nav>
-<h2>Load as HTML Tag</h2>
-<div #container></div>
+
+<h2>Loaded by router outlet</h2>
 <router-outlet />
 
+<h2>Load as HTML Tag div#container</h2>
+<div #container></div>
 
-<h3>Simple include of hello world component</h3>
+<h2>Loaded with Dynamic component</h2>
+<ndc-dynamic [ndcDynamicComponent]="mfeEurrentComponent"  [ndcDynamicInputs]="{remoteInput:'dynamic input'}" ></ndc-dynamic>
+
+<h2>Simple include of hello world component</h2>
 <hello-world></hello-world>
+<hello-world></hello-world>
+
+
+<h2>Dynamic Component</h2>
+<ndc-dynamic
+  [ndcDynamicComponent]="currentComponent"
+  [ndcDynamicInputs]="inputs"
+  [ndcDynamicOutputs]="{
+  onSomething: { handler: doSomething, args: ['$event'] }
+      }"
+></ndc-dynamic>
+<button (click)="changeComponent('first')">Afficher le premier composant</button>
+<button (click)="changeComponent('second')">Afficher le second composant</button>
+

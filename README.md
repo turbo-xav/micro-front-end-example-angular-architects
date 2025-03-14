@@ -89,3 +89,4 @@ export const routes: Routes = [
  - [Angulararchitects.io exemple](https://www.angulararchitects.io/en/blog/the-microfrontend-revolution-part-2-module-federation-with-angular)
  - [Micro front end communication](https://dev.to/akdevcraft/ways-to-communicate-between-micro-frontends-51ol)
  - [Event Bus](https://oskari.io/blog/event-bus-micro-frontend)
+ - [Chargement ng-dynamic-component](https://www.npmjs.com/package/ng-dynamic-component?activeTab=readme)
