@@ -3,6 +3,7 @@
 ## Libs utilisées :
  - @angular-architects/native-federation
  - @angular-architects/module-federation
+ - ng-dynamic-component
 
 ## Lancer le projet :
 ### Mode dev
