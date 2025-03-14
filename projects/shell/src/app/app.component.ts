@@ -13,10 +13,10 @@ import {SecondDynamicComponent} from './second-dynamic/second-dynamic.component'
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppComponent implements OnInit{
-  title = 'shell';
+  title = 'Application shell';
 
   inputs = {
-    name: 'transmitted value'
+    name: 'Je viens de me charger à l\'ancienne'
   }
 
   @ViewChild('container', { read: ViewContainerRef, static: true })
@@ -74,7 +74,6 @@ export class AppComponent implements OnInit{
 
     // Instancie dynamiquement le composant dans le conteneur
     const componentRef = this.container.createComponent(module.RemoteComponent);
-    const component = componentRef.instance;
     (componentRef.instance as any)['remoteInput'] = 'Loaded by loadRemoteModule';
     this.mfeEurrentComponent = module.RemoteComponent;
 

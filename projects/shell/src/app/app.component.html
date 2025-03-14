@@ -7,21 +7,35 @@
   </ul>
 </nav>
 
-<h2>Loaded by router outlet</h2>
+<h2>Sub Application: routing</h2>
+<code>
+  Vous voyez comment le routing charge des sous applications.
+  Attendez de voir comment charger les composants dynamiquement.
+  &lt;router outlet/&gt;
+
 <router-outlet />
+</code>
+<h2>Component </h2>
+<h3>Load as HTML Tag div#container</h3>
+<code>
+  Bon la c'est fait à l'ancienne mais ça fonctionne. On va utiliser ng-dynamic-component pour charger les composants dynamiquement.
+  ViewChild
+  container!: ViewContainerRef;
+</code>
 
-<h2>Load as HTML Tag div#container</h2>
 <div #container></div>
+<h3>Loaded with Ng Dynamic component</h3>
+<code>Ici j'utilise diectement &lt;ndc-dynamic &gt; issu de ng-dynamic-component</code>
+<ndc-dynamic [ndcDynamicComponent]="mfeEurrentComponent"  [ndcDynamicInputs]="{remoteInput:'ng-dynamic-component vient de me charger'}" ></ndc-dynamic>
 
-<h2>Loaded with Dynamic component</h2>
-<ndc-dynamic [ndcDynamicComponent]="mfeEurrentComponent"  [ndcDynamicInputs]="{remoteInput:'dynamic input'}" ></ndc-dynamic>
+<h3>Simple include of hello world component</h3>
+<code>Ici j'utilise diectement &lt;hello-world&gt; 2 fois de suite</code>
+<div style="width:150px; display:flex; justify-content: space-around">
+  <hello-world></hello-world>
+  <hello-world></hello-world>
+</div>
 
-<h2>Simple include of hello world component</h2>
-<hello-world></hello-world>
-<hello-world></hello-world>
-
-
-<h2>Dynamic Component</h2>
+<!--<h3>Dynamic Component</h3>
 <ndc-dynamic
   [ndcDynamicComponent]="currentComponent"
   [ndcDynamicInputs]="inputs"
@@ -31,4 +45,4 @@
 ></ndc-dynamic>
 <button (click)="changeComponent('first')">Afficher le premier composant</button>
 <button (click)="changeComponent('second')">Afficher le second composant</button>
-
+-->

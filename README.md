@@ -5,10 +5,18 @@
  - @angular-architects/module-federation
 
 ## Lancer le projet :
+### Mode dev
 ```bash
- npm ci
- npm start 
+npm ci
+npm start 
 ```
+### Mode build
+
+```bash
+npm run build-ci
+npm run build:start
+```
+
 - Browse 
   - http://localhost:4200 for the Shell
   - http://localhost:4201 for the Mfe1
@@ -83,6 +91,8 @@ export const routes: Routes = [
 
 ];
 ```
+
+
 
 ## Documents et liens utiles:
  - [GitHub Angular Architect](https://github.com/angular-architects/module-federation-plugin/blob/main/libs/native-federation/README.md#error-file-srcmaints-is-missing-from-the-typescript-compilation-plugin-angular-compiler)
